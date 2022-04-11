@@ -14,6 +14,7 @@ import (
 var (
 	app        = kingpin.New("proxy", "lspserver proxy").Version(config.Version + "-build-" + config.Build)
 	configFile = app.Flag("config-file", "Config file (.yml)").Required().String()
+	listenPort = app.Flag("listen-address", "Listening to address").Default("127.0.0.1:49093").String()
 )
 
 func Run() error {

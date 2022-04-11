@@ -24,7 +24,7 @@
 
 ```bash
 version=latest make build
-./bin/proxy --config-file="$PWD/config/config.yml"
+./bin/proxy --config-file="/tmp/config.yml" --listen-address 127.0.0.1:49093
 ```
 
 
@@ -33,7 +33,7 @@ version=latest make build
 
 ```bash
 version=latest make docker
-docker run -v "$PWD"/config:/tmp ghcr.io/lspserver/proxy:latest --config-file="/tmp/config.yml"
+docker run --rm -p 49093:49093 -v "$PWD"/config:/tmp ghcr.io/lspserver/proxy:latest --config-file="/tmp/config.yml" --listen-address 127.0.0.1:49093
 ```
 
 
@@ -41,6 +41,16 @@ docker run -v "$PWD"/config:/tmp ghcr.io/lspserver/proxy:latest --config-file="/
 ## Usage
 
 ```
+usage: proxy --config-file=CONFIG-FILE [<flags>]
+
+lspserver proxy
+
+Flags:
+  --help                     Show context-sensitive help (also try --help-long and --help-man).
+  --version                  Show application version.
+  --config-file=CONFIG-FILE  Config file (.yml)
+  --listen-address="127.0.0.1:49093"
+                             Listening to address
 ```
 
 
@@ -112,6 +122,7 @@ Project License can be found [here](LICENSE).
 
 - [codemirror-lsp-example](https://github.com/wylieconlon/codemirror-lsp-example)
 - [codemirror-mode](https://github.com/codemirror/CodeMirror/tree/master/mode)
+- [gorilla-websocket](https://github.com/gorilla/websocket/tree/master/examples/command)
 - [jsonrpc-ws-proxy](https://github.com/wylieconlon/jsonrpc-ws-proxy)
 - [language-server-protocol](https://microsoft.github.io/language-server-protocol/)
 - [lsp-editor-adapter-example](https://github.com/wylieconlon/lsp-editor-adapter/tree/master/example)

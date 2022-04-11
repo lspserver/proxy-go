@@ -12,9 +12,9 @@ func TestInitConfig(t *testing.T) {
 	_, err = initConfig("invalid.yml")
 	assert.NotEqual(t, nil, err)
 
-	_, err = initConfig("../tests/invalid.yml")
+	_, err = initConfig("../test/invalid.yml")
 	assert.NotEqual(t, nil, err)
 
-	_, err = initConfig("../tests/config.yml")
+	_, err = initConfig("../test/config.yml")
 	assert.Equal(t, nil, err)
 }
