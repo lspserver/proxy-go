@@ -1,5 +1,5 @@
 FROM golang:latest AS build-stage
-WORKDIR /c/src/app
+WORKDIR /go/src/app
 COPY . .
 RUN apt update && \
     apt install -y upx
