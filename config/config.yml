@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: proxy
+metadata:
+  name: proxy
+spec:
+  server:
+    - name: c
+      run:
+        - ccls
+        - --init="{"clang": {"resourceDir": "/usr/lib/llvm-10/lib/clang/10.0.0/include"}}"
+    - name: c++
+      run:
+        - ccls
+        - --init="{"clang": {"resourceDir": "/usr/lib/llvm-10/lib/clang/10.0.0/include"}}"
+    - name: css
+      run:
+        - npx
+        - css-languageserver
+        - --stdio
+    - name: dockerfile
+      run:
+        - npx
+        - docker-langserver
+        - --stdio
+    - name: go
+      run:
+        - gopls
+    - name: html
+      run:
+        - npx
+        - html-languageserver
+        - --stdio
+    - name: java
+    - name: javascript
+      run:
+        - node
+        - language-server-stdio.js
+    - name: python
+    - name: rust
+      run:
+        - rls
+    - name: shell
+      run:
+        - npx
+        - bash-language-server
+        - start
